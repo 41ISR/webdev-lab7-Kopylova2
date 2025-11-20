@@ -2,7 +2,7 @@ import { useState } from "react"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import { api } from "../api/api"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from "../store/useUserStore"
 
 const SignUp = () => {

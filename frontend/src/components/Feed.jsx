@@ -8,9 +8,15 @@ const Feed = ({ title = "Сообщения" }) => {
     useEffect(() => {
         getMessages()
     }, [])
-        useEffect(() => {
-console.log(messages);
-    }, [messages])
+
+    const [timerId, seTimerId] = useState(underfined)
+    
+    useEffect(() => {
+        getMessages()
+        setTimerId(setInterval(() => {
+            getMessages()
+        }, 5000))
+    }, [])
 
     return (
         <>

@@ -12,7 +12,7 @@ apiInstance.interceptors.request.use((config) => {
     const { session } = useUserStore.getState()
 
     if (session?.token) {
-        config.headers.Authorization = `Bearer $ {session.token}`
+        config.headers.Authorization = `Bearer ${session.token}`
     }
 
     return config
@@ -38,9 +38,27 @@ const sendMessage = async (message) => {
     return res
 }
 
+const deleteMessage = async (id) => {
+    const res = await apiInstance.delete(`/messages/${id}`)
+    return res
+}
+
+const likeMessage = async (id) => {
+    const res = await apiInstance.post(`/messages/${id}/like`)
+    return res
+}
+
+const reportMessage = async (id) => {
+    const res = await apiInstance.post(`/messages/${id}/report`)
+    return res
+}
+
 export const api = {
     getMessages,
     registerUser,
     loginUser,
-    sendMessage
+    sendMessage,
+    deleteMessage,
+    likeMessage,
+    reportMessage
 }
